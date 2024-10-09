@@ -1,0 +1,47 @@
+[
+  {
+    "application_id": 1,
+    "title": "Develop AI-Based Application",
+    "project_id": 101,
+    "deadline": "2024-10-31T23:59:00",
+    "status": "OPN",
+    "created_at": "2024-10-01T12:30:00",
+    "updated_at": "2024-10-08T15:45:00"
+  },
+  {
+    "application_id": 2,
+    "title": "Web Platform for Hackathons",
+    "project_id": 102,
+    "deadline": "2024-11-15T23:59:00",
+    "status": "CLS",
+    "created_at": "2024-09-25T10:00:00",
+    "updated_at": "2024-10-01T14:00:00"
+  },
+  {
+    "application_id": 3,
+    "title": "Blockchain-Based Voting System",
+    "project_id": 103,
+    "deadline": "2024-12-01T23:59:00",
+    "status": "VF",
+    "created_at": "2024-09-30T09:00:00",
+    "updated_at": "2024-10-05T11:30:00"
+  },
+  {
+    "application_id": 4,
+    "title": "Mobile App for Health Monitoring",
+    "project_id": 104,
+    "deadline": "2024-10-20T23:59:00",
+    "status": "OPN",
+    "created_at": "2024-09-15T08:45:00",
+    "updated_at": "2024-10-07T16:00:00"
+  },
+  {
+    "application_id": 5,
+    "title": "E-Commerce Platform Redesign",
+    "project_id": 105,
+    "deadline": "2024-11-30T23:59:00",
+    "status": "CLS",
+    "created_at": "2024-09-20T13:30:00",
+    "updated_at": "2024-10-06T12:00:00"
+  }
+]

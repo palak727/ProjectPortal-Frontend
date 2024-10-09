@@ -1,0 +1,137 @@
+[
+  {
+    "project_id": 1,
+    "title": "Machine Learning Project",
+    "description": "A comprehensive machine learning project focusing on predictive analytics.",
+    "prof_id": "prof_001",
+    "domain": "Computer Science",
+    "skills_required": {
+      "skills": ["Python", "Pandas", "Scikit-learn"],
+      "level": "intermediate"
+    },
+    "project_type": "Research",
+    "status": "APP",
+    "weekly_commitment": 8,
+    "start_date": "2024-10-10",
+    "duration_in_days": 30,
+    "vacancies": 2,
+    "resource_links": {
+      "repository": "https://github.com/example/ml_project",
+      "documentation": "https://example.com/docs/ml_project"
+    },
+    "created_at": "2024-10-01T10:00:00",
+    "updated_at": "2024-10-05T12:30:00",
+    "tags": {
+      "tags": ["ML", "AI", "Data Science"],
+      "categories": ["Research", "Analytics"]
+    }
+  },
+  {
+    "project_id": 2,
+    "title": "E-commerce Web Application",
+    "description": "Developing a full-stack e-commerce application using React and Node.js.",
+    "prof_id": "prof_002",
+    "domain": "Web Development",
+    "skills_required": {
+      "skills": ["JavaScript", "React", "Node.js"],
+      "level": "advanced"
+    },
+    "project_type": "Development",
+    "status": "COM",
+    "weekly_commitment": 10,
+    "start_date": "2024-11-01",
+    "duration_in_days": 45,
+    "vacancies": 3,
+    "resource_links": {
+      "repository": "https://github.com/example/ecommerce_app",
+      "documentation": "https://example.com/docs/ecommerce_app"
+    },
+    "created_at": "2024-09-20T09:00:00",
+    "updated_at": "2024-10-06T11:00:00",
+    "tags": {
+      "tags": ["E-commerce", "React", "Node.js"],
+      "categories": ["Web Development", "Full Stack"]
+    }
+  },
+  {
+    "project_id": 3,
+    "title": "Mobile App Development",
+    "description": "Creating a mobile application for personal finance management.",
+    "prof_id": "prof_003",
+    "domain": "Mobile Development",
+    "skills_required": {
+      "skills": ["Swift", "iOS Development", "UI Design"],
+      "level": "beginner"
+    },
+    "project_type": "Development",
+    "status": "PAU",
+    "weekly_commitment": 5,
+    "start_date": "2024-10-15",
+    "duration_in_days": 60,
+    "vacancies": 1,
+    "resource_links": {
+      "repository": "https://github.com/example/mobile_app",
+      "documentation": "https://example.com/docs/mobile_app"
+    },
+    "created_at": "2024-08-15T11:30:00",
+    "updated_at": "2024-09-30T14:00:00",
+    "tags": {
+      "tags": ["Mobile", "Finance", "iOS"],
+      "categories": ["Mobile Development", "Applications"]
+    }
+  },
+  {
+    "project_id": 4,
+    "title": "Data Analysis Project",
+    "description": "Analyzing large datasets to derive insights and patterns.",
+    "prof_id": "prof_004",
+    "domain": "Data Science",
+    "skills_required": {
+      "skills": ["SQL", "Python", "Data Visualization"],
+      "level": "intermediate"
+    },
+    "project_type": "Research",
+    "status": "ABR",
+    "weekly_commitment": 12,
+    "start_date": "2024-11-20",
+    "duration_in_days": 90,
+    "vacancies": 2,
+    "resource_links": {
+      "repository": "https://github.com/example/data_analysis",
+      "documentation": "https://example.com/docs/data_analysis"
+    },
+    "created_at": "2024-09-10T15:00:00",
+    "updated_at": "2024-09-30T14:00:00",
+    "tags": {
+      "tags": ["Data Analysis", "Insights", "SQL"],
+      "categories": ["Research", "Analytics"]
+    }
+  },
+  {
+    "project_id": 5,
+    "title": "Cloud Infrastructure Setup",
+    "description": "Setting up a cloud infrastructure using AWS for a scalable application.",
+    "prof_id": "prof_005",
+    "domain": "Cloud Computing",
+    "skills_required": {
+      "skills": ["AWS", "DevOps", "Docker"],
+      "level": "advanced"
+    },
+    "project_type": "Infrastructure",
+    "status": "CRE",
+    "weekly_commitment": 10,
+    "start_date": "2024-10-25",
+    "duration_in_days": 120,
+    "vacancies": 3,
+    "resource_links": {
+      "repository": "https://github.com/example/cloud_setup",
+      "documentation": "https://example.com/docs/cloud_setup"
+    },
+    "created_at": "2024-10-01T09:00:00",
+    "updated_at": "2024-10-05T14:00:00",
+    "tags": {
+      "tags": ["Cloud", "Infrastructure", "DevOps"],
+      "categories": ["Cloud Computing", "Deployment"]
+    }
+  }
+]

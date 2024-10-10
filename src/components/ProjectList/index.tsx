@@ -6,21 +6,21 @@ import { format } from "date-fns";
 
 type Project = {
   project_id: string;
-  title: string; // Required
-  description?: string; // Optional
-  prof_id: string; // Required
-  domain?: string; // Optional
-  skills_required?: { skill: string }[]; // Optional
-  project_type?: string; // Optional
-  status: string; // Required
-  weekly_commitment: number; // Required
-  start_date: string; // Required
-  duration_in_days?: number; // Optional
-  vacancies: number; // Required
-  resource_links?: { link: string }[]; // Optional
+  title: string; 
+  description?: string; 
+  prof_id: string; 
+  domain?: string; 
+  skills_required?: { skill: string }[]; 
+  project_type?: string; 
+  status: string; 
+  weekly_commitment: number; 
+  start_date: string; 
+  duration_in_days?: number; 
+  vacancies: number; 
+  resource_links?: { link: string }[]; 
   created_at: string;
   updated_at: string;
-  tags?: { tag: string }[]; // Optional
+  tags?: { tag: string }[]; 
 };
 
 export default function ProjectsList() {

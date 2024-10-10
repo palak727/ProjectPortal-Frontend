@@ -51,15 +51,15 @@ function ProjectDetails() {
   }, [id]);
 
   useEffect(() => {
-    // Toggle body scroll when the modal is open/closed
+    
     if (showUpdateModal) {
-      document.body.style.overflow = "hidden"; // Prevent background scroll
+      document.body.style.overflow = "hidden"; 
     } else {
-      document.body.style.overflow = "auto"; // Allow background scroll
+      document.body.style.overflow = "auto"; 
     }
 
     return () => {
-      document.body.style.overflow = "auto"; // Cleanup on unmount
+      document.body.style.overflow = "auto"; 
     };
   }, [showUpdateModal]);
 

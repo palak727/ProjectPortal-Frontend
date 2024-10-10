@@ -52,7 +52,7 @@ const menuGroups = [
 
         ),
         label: "Applications",
-        route: "/prof/applications",
+        route: "/prof/Application",
       },
      
       {

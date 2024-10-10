@@ -119,18 +119,17 @@ const dummyData = [
 ];
 
 function StudentTable() {
-  const [isPending, setIsPending] = useState(true); // Toggle between pending and active students
+  const [isPending, setIsPending] = useState(true);
   const [students, setStudents] = useState([]);
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [isDetailModalOpen, setDetailModalOpen] = useState(false);
   const [isConfirmModalOpen, setConfirmModalOpen] = useState(false);
-  const [confirmAction, setConfirmAction] = useState(""); // Either 'accept' or 'reject'
+  const [confirmAction, setConfirmAction] = useState("");
 
-  // Load dummy data into the student list
   useEffect(() => {
-    setStudents(dummyData); // Replace with real data fetching
-    setFilteredStudents(dummyData); // Initially show all students
+    setStudents(dummyData);
+    setFilteredStudents(dummyData);
   }, []);
 
   const handleSearch = (e) => {
@@ -157,16 +156,14 @@ function StudentTable() {
 
   const confirmDecision = () => {
     if (confirmAction === "accept") {
-      // Handle acceptance logic
     } else if (confirmAction === "reject") {
-      // Handle rejection logic
     }
     setConfirmModalOpen(false);
   };
 
   return (
     <div className="p-4">
-      {/* Toggle between Pending Applications and Active Students */}
+      {/* Toggle */}
       <div className="mb-4 flex items-center justify-between">
         <h1 className="text-2xl font-bold">
           {isPending ? "Pending Applications" : "Active Students"}

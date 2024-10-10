@@ -1,137 +1,118 @@
 [
   {
-    "project_id": 1,
-    "title": "Machine Learning Project",
-    "description": "A comprehensive machine learning project focusing on predictive analytics.",
-    "prof_id": "prof_001",
-    "domain": "Computer Science",
-    "skills_required": {
-      "skills": ["Python", "Pandas", "Scikit-learn"],
-      "level": "intermediate"
-    },
-    "project_type": "Research",
-    "status": "APP",
-    "weekly_commitment": 8,
-    "start_date": "2024-10-10",
-    "duration_in_days": 30,
-    "vacancies": 2,
-    "resource_links": {
-      "repository": "https://github.com/example/ml_project",
-      "documentation": "https://example.com/docs/ml_project"
-    },
-    "created_at": "2024-10-01T10:00:00",
-    "updated_at": "2024-10-05T12:30:00",
-    "tags": {
-      "tags": ["ML", "AI", "Data Science"],
-      "categories": ["Research", "Analytics"]
-    }
-  },
-  {
-    "project_id": 2,
-    "title": "E-commerce Web Application",
-    "description": "Developing a full-stack e-commerce application using React and Node.js.",
-    "prof_id": "prof_002",
-    "domain": "Web Development",
-    "skills_required": {
-      "skills": ["JavaScript", "React", "Node.js"],
-      "level": "advanced"
-    },
-    "project_type": "Development",
-    "status": "COM",
-    "weekly_commitment": 10,
-    "start_date": "2024-11-01",
-    "duration_in_days": 45,
-    "vacancies": 3,
-    "resource_links": {
-      "repository": "https://github.com/example/ecommerce_app",
-      "documentation": "https://example.com/docs/ecommerce_app"
-    },
-    "created_at": "2024-09-20T09:00:00",
-    "updated_at": "2024-10-06T11:00:00",
-    "tags": {
-      "tags": ["E-commerce", "React", "Node.js"],
-      "categories": ["Web Development", "Full Stack"]
-    }
-  },
-  {
-    "project_id": 3,
-    "title": "Mobile App Development",
-    "description": "Creating a mobile application for personal finance management.",
-    "prof_id": "prof_003",
-    "domain": "Mobile Development",
-    "skills_required": {
-      "skills": ["Swift", "iOS Development", "UI Design"],
-      "level": "beginner"
-    },
-    "project_type": "Development",
-    "status": "PAU",
-    "weekly_commitment": 5,
-    "start_date": "2024-10-15",
-    "duration_in_days": 60,
-    "vacancies": 1,
-    "resource_links": {
-      "repository": "https://github.com/example/mobile_app",
-      "documentation": "https://example.com/docs/mobile_app"
-    },
-    "created_at": "2024-08-15T11:30:00",
-    "updated_at": "2024-09-30T14:00:00",
-    "tags": {
-      "tags": ["Mobile", "Finance", "iOS"],
-      "categories": ["Mobile Development", "Applications"]
-    }
-  },
-  {
-    "project_id": 4,
-    "title": "Data Analysis Project",
-    "description": "Analyzing large datasets to derive insights and patterns.",
-    "prof_id": "prof_004",
-    "domain": "Data Science",
-    "skills_required": {
-      "skills": ["SQL", "Python", "Data Visualization"],
-      "level": "intermediate"
-    },
-    "project_type": "Research",
-    "status": "ABR",
-    "weekly_commitment": 12,
-    "start_date": "2024-11-20",
-    "duration_in_days": 90,
-    "vacancies": 2,
-    "resource_links": {
-      "repository": "https://github.com/example/data_analysis",
-      "documentation": "https://example.com/docs/data_analysis"
-    },
-    "created_at": "2024-09-10T15:00:00",
-    "updated_at": "2024-09-30T14:00:00",
-    "tags": {
-      "tags": ["Data Analysis", "Insights", "SQL"],
-      "categories": ["Research", "Analytics"]
-    }
-  },
-  {
-    "project_id": 5,
-    "title": "Cloud Infrastructure Setup",
-    "description": "Setting up a cloud infrastructure using AWS for a scalable application.",
-    "prof_id": "prof_005",
-    "domain": "Cloud Computing",
-    "skills_required": {
-      "skills": ["AWS", "DevOps", "Docker"],
-      "level": "advanced"
-    },
-    "project_type": "Infrastructure",
-    "status": "CRE",
-    "weekly_commitment": 10,
-    "start_date": "2024-10-25",
+    "created_at": "2024-09-20T10:00:00.000Z",
+    "description": "This project aims to develop an innovative e-commerce platform leveraging AI to personalize shopping experiences.",
+    "domain": "E-commerce",
     "duration_in_days": 120,
+    "prof_id": "michael.smith@example.com",
+    "project_id": 1,
+    "project_type": "Development",
+    "resource_links": [
+      { "link": "https://example.com/ecommerce-whitepaper" },
+      { "link": "https://example.com/api-docs" }
+    ],
+    "skills_required": [
+      { "skill": "JavaScript" },
+      { "skill": "React" },
+      { "skill": "Node.js" }
+    ],
+    "start_date": "2024-10-01T09:00:00.000Z",
+    "status": "CRE",
+    "tags": [
+      { "tag": "E-commerce" },
+      { "tag": "AI" },
+      { "tag": "Web Development" }
+    ],
+    "title": "AI-Powered E-commerce Platform",
+    "updated_at": "2024-09-20T10:00:00.000Z",
+    "vacancies": 5,
+    "weekly_commitment": 10
+  },
+  {
+    "created_at": "2024-09-22T14:15:00.000Z",
+    "description": "A project dedicated to creating a mobile application for mental health support using a community-driven approach.",
+    "domain": "Health",
+    "duration_in_days": 60,
+    "prof_id": "emily.johnson@example.com",
+    "project_id": 2,
+    "project_type": "Mobile Development",
+    "resource_links": [
+      { "link": "https://example.com/mental-health-research" },
+      { "link": "https://example.com/app-architecture" }
+    ],
+    "skills_required": [
+      { "skill": "Flutter" },
+      { "skill": "Firebase" },
+      { "skill": "UX Design" }
+    ],
+    "start_date": "2024-11-01T10:00:00.000Z",
+    "status": "CRE",
+    "tags": [
+      { "tag": "Mental Health" },
+      { "tag": "Mobile App" },
+      { "tag": "Community" }
+    ],
+    "title": "Community-Based Mental Health App",
+    "updated_at": "2024-09-22T14:15:00.000Z",
+    "vacancies": 4,
+    "weekly_commitment": 12
+  },
+  {
+    "created_at": "2024-09-25T16:30:00.000Z",
+    "description": "This project explores renewable energy solutions, focusing on solar energy harnessing techniques for urban areas.",
+    "domain": "Energy",
+    "duration_in_days": 180,
+    "prof_id": "john.doe@example.com",
+    "project_id": 3,
+    "project_type": "Research",
+    "resource_links": [
+      { "link": "https://example.com/renewable-energy-studies" },
+      { "link": "https://example.com/solar-energy-guide" }
+    ],
+    "skills_required": [
+      { "skill": "Energy Engineering" },
+      { "skill": "Data Analysis" },
+      { "skill": "Project Management" }
+    ],
+    "start_date": "2024-11-15T08:00:00.000Z",
+    "status": "CRE",
+    "tags": [
+      { "tag": "Renewable Energy" },
+      { "tag": "Solar" },
+      { "tag": "Urban Development" }
+    ],
+    "title": "Urban Solar Energy Solutions",
+    "updated_at": "2024-09-25T16:30:00.000Z",
+    "vacancies": 2,
+    "weekly_commitment": 20
+  },
+  {
+    "created_at": "2024-09-30T09:45:00.000Z",
+    "description": "A project that focuses on developing educational tools and platforms to enhance STEM learning for high school students.",
+    "domain": "Education",
+    "duration_in_days": 75,
+    "prof_id": "susan.miller@example.com",
+    "project_id": 4,
+    "project_type": "Development",
+    "resource_links": [
+      { "link": "https://example.com/stem-education-research" },
+      { "link": "https://example.com/education-tools-guide" }
+    ],
+    "skills_required": [
+      { "skill": "Java" },
+      { "skill": "React" },
+      { "skill": "Graphic Design" }
+    ],
+    "start_date": "2024-11-01T09:00:00.000Z",
+    "status": "CRE",
+    "tags": [
+      { "tag": "Education" },
+      { "tag": "STEM" },
+      { "tag": "Development" }
+    ],
+    "title": "STEM Education Enhancement Tools",
+    "updated_at": "2024-09-30T09:45:00.000Z",
     "vacancies": 3,
-    "resource_links": {
-      "repository": "https://github.com/example/cloud_setup",
-      "documentation": "https://example.com/docs/cloud_setup"
-    },
-    "created_at": "2024-10-01T09:00:00",
-    "updated_at": "2024-10-05T14:00:00",
-    "tags": {
-      "tags": ["Cloud", "Infrastructure", "DevOps"],
-      "categories": ["Cloud Computing", "Deployment"]
-    }
+    "weekly_commitment": 15
   }
 ]

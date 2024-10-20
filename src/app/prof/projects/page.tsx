@@ -1,11 +1,11 @@
-import ProjectsList from "@/components/ProjectList";
+import ProjectList from "@/components/ProjectList";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
 
 const Projects = () => {
 
   return (
     <DefaultLayout>
-      <ProjectsList />
+      <ProjectList />
     </DefaultLayout>
   );
 };

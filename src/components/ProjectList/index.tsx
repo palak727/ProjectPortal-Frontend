@@ -1,157 +1,296 @@
-"use client";
+'use client'
 
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { format } from "date-fns"; 
+import React, { useState } from 'react'
+import Image from 'next/image'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Calendar, Clock, Users, Tag, Link as LinkIcon, X } from 'lucide-react'
 
-type Project = {
-  project_id: string;
-  title: string; 
-  description?: string; 
-  prof_id: string; 
-  domain?: string; 
-  skills_required?: { skill: string }[]; 
-  project_type?: string; 
-  status: string; 
-  weekly_commitment: number; 
-  start_date: string; 
-  duration_in_days?: number; 
-  vacancies: number; 
-  resource_links?: { link: string }[]; 
+interface ResourceLink {
+  link: string;
+}
+
+interface Skill {
+  skill: string;
+}
+
+interface ProjectTag {
+  tag: string;
+}
+
+interface Professor {
+  name: string;
+  email: string;
+  department: string;
+  profile_picture_url: string;
+}
+
+interface Project {
   created_at: string;
+  description: string;
+  domain: string;
+  duration_in_days: number;
+  prof_id: string;
+  project_id: number;
+  project_type: string;
+  resource_links: ResourceLink[];
+  skills_required: Skill[];
+  start_date: string;
+  status: string;
+  tags: ProjectTag[];
+  title: string;
   updated_at: string;
-  tags?: { tag: string }[]; 
-};
+  vacancies: number;
+  weekly_commitment: number;
+  professor: Professor;
+}
 
-export default function ProjectsList() {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+// Sample project data
+const projectsData: Project[] = [
+  {
+    created_at: "2024-09-20T10:00:00.000Z",
+    description: "This project aims to develop an innovative e-commerce platform leveraging AI to personalize shopping experiences.",
+    domain: "E-commerce",
+    duration_in_days: 120,
+    prof_id: "michael.smith@example.com",
+    project_id: 1,
+    project_type: "Development",
+    resource_links: [
+      { link: "https://example.com/ecommerce-whitepaper" },
+      { link: "https://example.com/api-docs" }
+    ],
+    skills_required: [
+      { skill: "JavaScript" },
+      { skill: "React" },
+      { skill: "Node.js" }
+    ],
+    start_date: "2024-10-01T09:00:00.000Z",
+    status: "CRE",
+    tags: [
+      { tag: "E-commerce" },
+      { tag: "AI" },
+      { tag: "Web Development" }
+    ],
+    title: "AI-Powered E-commerce Platform",
+    updated_at: "2024-09-20T10:00:00.000Z",
+    vacancies: 5,
+    weekly_commitment: 10,
+    professor: {
+      name: "Dr. Michael Smith",
+      email: "michael.smith@example.com",
+      department: "Computer Science",
+      profile_picture_url: "/placeholder.svg?height=100&width=100"
+    }
+  },
+  {
+    created_at: "2024-09-22T14:15:00.000Z",
+    description: "A project dedicated to creating a mobile application for mental health support using a community-driven approach.",
+    domain: "Health",
+    duration_in_days: 60,
+    prof_id: "emily.johnson@example.com",
+    project_id: 2,
+    project_type: "Mobile Development",
+    resource_links: [
+      { link: "https://example.com/mental-health-research" },
+      { link: "https://example.com/app-architecture" }
+    ],
+    skills_required: [
+      { skill: "Flutter" },
+      { skill: "Firebase" },
+      { skill: "UX Design" }
+    ],
+    start_date: "2024-11-01T10:00:00.000Z",
+    status: "CRE",
+    tags: [
+      { tag: "Mental Health" },
+      { tag: "Mobile App" },
+      { tag: "Community" }
+    ],
+    title: "Community-Based Mental Health App",
+    updated_at: "2024-09-22T14:15:00.000Z",
+    vacancies: 4,
+    weekly_commitment: 12,
+    professor: {
+      name: "Dr. Emily Johnson",
+      email: "emily.johnson@example.com",
+      department: "Psychology",
+      profile_picture_url: "/placeholder.svg?height=100&width=100"
+    }
+  }
+]
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/v1/prof/projects`,
-          { withCredentials: true },
-        );
-        setProjects(response.data.data || []);
-      } catch (err: any) {
-        setError(err.response?.data?.message || "Failed to fetch projects");
-      } finally {
-        setLoading(false);
-      }
-    };
+export default function ProjectPortal(): JSX.Element {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
-    fetchProjects();
-  }, []);
+  const openModal = (project: Project): void => {
+    setSelectedProject(project)
+  }
 
-  if (loading) return <div className="loader">Loading...</div>;
-  if (error)
-    return <p className="mt-8 text-center text-red-500">Error: {error}</p>;
-  if (projects.length === 0)
-    return <p className="mt-8 text-center">No projects found</p>;
+  const closeModal = (): void => {
+    setSelectedProject(null)
+  }
+
+  const handleApply = (): void => {
+    if (selectedProject) {
+      // Here you would typically handle the application process
+      console.log('Applied to project:', selectedProject.title)
+      closeModal()
+    }
+  }
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="mb-8 text-center text-3xl font-bold">Projects</h1>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => (
-          <div
-            key={project.project_id}
-            className="flex flex-col rounded-lg bg-white p-6 text-black shadow-lg transition-transform duration-300 hover:scale-105 dark:bg-gray-800 dark:text-gray-100"
-          >
-            <div className="mb-4">
-              <h2 className="text-2xl font-semibold">
-                {project.title} <span className="text-red-500">*</span>
-              </h2>
-              <p className="line-clamp-2">{project.description}</p>
-            </div>
-            <button
-              onClick={() => setSelectedProject(project)}
-              className="mt-auto rounded bg-blue-500 px-4 py-2 text-white dark:bg-blue-400"
-            >
-              View Details
-            </button>
-          </div>
-        ))}
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8 relative overflow-hidden">
+      {/* Background pattern */}
+      <div className="absolute inset-0 z-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }} />
       </div>
 
-      {/* Details Modal */}
-      {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
-          <div className="w-full max-w-3xl rounded-lg bg-white p-6 text-black shadow-lg dark:bg-gray-900 dark:text-white">
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="float-right text-red-500"
+      {/* Content */}
+      <div className="max-w-6xl mx-auto relative z-10">
+        <h1 className="text-5xl font-bold text-center mb-12 text-indigo-900 relative">
+          Project Portal
+          <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-indigo-500 rounded-full"></span>
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projectsData.map((project) => (
+            <motion.div
+              key={project.project_id}
+              className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:shadow-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              whileHover={{ scale: 1.02 }}
             >
-              Close
-            </button>
-            <h2 className="mb-4 text-3xl font-bold">{selectedProject.title}</h2>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  <strong>Description: </strong>{" "}
-                  {selectedProject.description || "No description available"}
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  <strong>Domain: </strong> {selectedProject.domain || "N/A"}
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  <strong>Weekly Commitment: </strong>{" "}
-                  {selectedProject.weekly_commitment} hours
-                </p>
-              </div>
-              <div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  <strong>Start Date: </strong>{" "}
-                  {format(new Date(selectedProject.start_date), "PPP")}
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  <strong>Vacancies: </strong> {selectedProject.vacancies}
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  <strong>Status: </strong> {selectedProject.status}
-                </p>
-              </div>
-            </div>
-
-            {selectedProject.skills_required &&
-              selectedProject.skills_required.length > 0 && (
-                <div className="mt-4">
-                  <p className="text-sm font-bold">Skills Required:</p>
-                  <ul className="list-disc pl-5 text-sm">
-                    {selectedProject.skills_required.map((skill, idx) => (
-                      <li key={idx}>{skill.skill}</li>
-                    ))}
-                  </ul>
+              <div className="p-6">
+                <h2 className="text-2xl font-semibold mb-3 text-indigo-800">{project.title}</h2>
+                <p className="text-gray-600 mb-4 line-clamp-3">{project.description}</p>
+                <div className="flex items-center mb-3">
+                  <Calendar className="w-5 h-5 mr-2 text-indigo-600" />
+                  <span className="text-sm text-gray-500">
+                    {new Date(project.start_date).toLocaleDateString()}
+                  </span>
                 </div>
-              )}
+                <div className="flex items-center mb-4">
+                  <Clock className="w-5 h-5 mr-2 text-indigo-600" />
+                  <span className="text-sm text-gray-500">
+                    {project.duration_in_days} days
+                  </span>
+                </div>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map((tag, index) => (
+                    <span
+                      key={index}
+                      className="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full"
+                    >
+                      {tag.tag}
+                    </span>
+                  ))}
+                </div>
+                <button
+                  onClick={() => openModal(project)}
+                  className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-300 transform hover:translate-y-[-2px] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+                >
+                  Show More Details
+                </button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
-            {selectedProject.resource_links &&
-              selectedProject.resource_links.length > 0 && (
-                <div className="mt-4">
-                  <p className="text-sm font-bold">Resource Links:</p>
-                  <ul className="list-disc pl-5 text-sm">
-                    {selectedProject.resource_links.map((link, idx) => (
-                      <li key={idx}>
-                        <a
-                          href={link.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-500"
-                        >
-                          {link.link}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center"
+            onClick={closeModal}
+          >
+            <motion.div
+              className="bg-white w-full max-w-md p-6 rounded-2xl shadow-xl"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
+            >
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-2xl font-medium text-gray-900">{selectedProject.title}</h3>
+                <button onClick={closeModal} className="text-gray-400 hover:text-gray-500">
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              <div className="mt-2">
+                <p className="text-sm text-gray-500">{selectedProject.description}</p>
+              </div>
+              <div className="mt-4 space-y-3">
+                <div className="flex items-center">
+                  <Users className="w-5 h-5 mr-2 text-indigo-600" />
+                  <span className="text-sm text-gray-700">Vacancies: {selectedProject.vacancies}</span>
+                </div>
+                <div className="flex items-center">
+                  <Clock className="w-5 h-5 mr-2 text-indigo-600" />
+                  <span className="text-sm text-gray-700">Weekly Commitment: {selectedProject.weekly_commitment} hours</span>
+                </div>
+                <div>
+                  <h4 className="text-sm font-medium text-gray-900 mb-2">Skills Required:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.skills_required.map((skill, index) => (
+                      <span key={index} className="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">
+                        {skill.skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-sm font-medium text-gray-900 mb-2">Resource Links:</h4>
+                  <ul className="space-y-1">
+                    {selectedProject.resource_links.map((resource, index) => (
+                      <li key={index} className="flex items-center">
+                        <LinkIcon className="w-4 h-4 mr-2 text-indigo-600" />
+                        <a href={resource.link} target="_blank" rel="noopener noreferrer" className="text-sm text-indigo-600 hover:underline">
+                          Resource {index + 1}
                         </a>
                       </li>
                     ))}
                   </ul>
                 </div>
-              )}
-          </div>
-        </div>
-      )}
+                <div className="mt-6">
+                  <h4 className="text-sm font-medium text-gray-900 mb-2">Project Lead:</h4>
+                    <Image
+                      src={selectedProject.professor.profile_picture_url}
+                      alt={selectedProject.professor.name}
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 rounded-full mr-4 border-2 border-indigo-200"
+                    />
+                    <div>
+                      <p className="text-sm font-medium text-gray-900">{selectedProject.professor.name}</p>
+                      <p className="text-xs text-gray-500">{selectedProject.professor.department}</p>
+                    </div>
+                  </div>
+                </div>
+              <div className="mt-8 flex justify-end space-x-4">
+                <button
+                  type="button"
+                  className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-transparent rounded-md hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-500 transition duration-150 ease-in-out"
+                  onClick={closeModal}
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500 transition duration-150 ease-in-out"
+                  onClick={handleApply}
+                >
+                  Apply
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
-  );
+  )
 }

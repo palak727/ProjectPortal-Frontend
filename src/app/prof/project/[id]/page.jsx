@@ -43,6 +43,17 @@ function ProjectDetails() {
         setLoading(false);
       }
     };
+    const fetchApplications = async () => {
+      try {
+        const response = await axios.get("/data/application.json");
+        const filteredApplications = response.data.filter(
+          (app) => app.project_id === Number(id) && app.status === "OPN",
+        );
+        setApplications(filteredApplications);
+      } catch (error) {
+        console.error("Failed to fetch application data:", error);
+      }
+    };
     fetchProjectData();
     fetchApplications();
   }, [id]);
@@ -60,17 +71,7 @@ function ProjectDetails() {
     };
   }, [showUpdateModal]);
 
-  const fetchApplications = async () => {
-    try {
-      const response = await axios.get("/data/application.json");
-      const filteredApplications = response.data.filter(
-        (app) => app.project_id === Number(id) && app.status === "OPN",
-      );
-      setApplications(filteredApplications);
-    } catch (error) {
-      console.error("Failed to fetch application data:", error);
-    }
-  };
+  
 
   const handleUpdateProject = async () => {
     try {

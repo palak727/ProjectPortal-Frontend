@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Calendar, Clock, User } from 'lucide-react'; // Import User icon for professor
+import { Calendar, Clock, User } from 'lucide-react'; 
 import { Project } from '@/types/project';
 import { useRouter } from 'next/navigation';
 import { Professor } from '@/types/professor';
@@ -9,10 +9,10 @@ import { Professor } from '@/types/professor';
 interface ProjectCardProps {
   project: Project;
   professor?: Professor;
-  onClick: () => void;
+  Click?: ()=>void;
 }
 
-const ProjectCard = ({ project, professor, onClick }: ProjectCardProps): JSX.Element => {
+const ProjectCard = ({ project, professor, Click }: ProjectCardProps): JSX.Element => {
   const router = useRouter();
   const handlePostNavigation = (id: number) => {
     router.push(`/project/${id}`);
@@ -75,7 +75,7 @@ const ProjectCard = ({ project, professor, onClick }: ProjectCardProps): JSX.Ele
           </button>
 
           <button
-            onClick={() => handlePostNavigation(project.project_id)}
+            onClick={() => Click ? Click() : handlePostNavigation(project.project_id)}
             className="ml-2 w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition duration-300 transform hover:translate-y-[-2px] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
           >
             Show More Details

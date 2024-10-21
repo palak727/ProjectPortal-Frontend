@@ -102,7 +102,7 @@ export default function ProjectPortal(): JSX.Element {
           const associatedProfessor = professorsData.find(prof => prof.email === project.prof_id);
 
           return (
-            <ProjectCard key={project.project_id} project={project} professor={associatedProfessor} onClick={()=> openModal(project)}/>
+            <ProjectCard key={project.project_id} project={project} professor={associatedProfessor} />
           )
         })}
         {selectedProject && (

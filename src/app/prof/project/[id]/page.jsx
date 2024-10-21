@@ -115,6 +115,7 @@ function ProjectDetails() {
         </button>
        {/* Project Details */}
         <ProjectMoreDetails project={project} />
+        {/* Applications */}
        <StudentTable />
       </DefaultLayout>
 

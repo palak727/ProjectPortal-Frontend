@@ -2,12 +2,16 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
-import ProjectCard from '../ProjectCard';
-import ProjectModal from '../ProjectModal';
+import ProjectCard from '@/components/ProjectCard';
+import ProjectModal from '@/components/ProjectModal';
 import { Project } from '@/types/project';
 import { Professor } from '@/types/professor';
+import DefaultLayout from "@/components/Layouts/DefaultLaout";
+import { useRouter } from 'next/navigation';
+
 
 export default function ProjectPortal(): JSX.Element {
+  const router = useRouter();
   const [projectsData, setProjectsData] = useState<Project[]>([]);
   const [professorsData, setProfessorsData] = useState<Professor[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -69,6 +73,7 @@ export default function ProjectPortal(): JSX.Element {
   }, [searchQuery, filter, sortOption, projectsData]);
 
   return (
+    <DefaultLayout>
     <div className="min-h-screen bg-white dark:bg-gray-900 p-8 text-gray-800 dark:text-gray-100">
       <div className="mb-4">
         <input 
@@ -102,7 +107,7 @@ export default function ProjectPortal(): JSX.Element {
           const associatedProfessor = professorsData.find(prof => prof.email === project.prof_id);
 
           return (
-            <ProjectCard key={project.project_id} project={project} professor={associatedProfessor} onClick={()=> openModal(project)}/>
+            <ProjectCard key={project.project_id} project={project} professor={associatedProfessor} onClick={()=>{router.push(`/prof/project/${project.project_id}`)}} />
           )
         })}
         {selectedProject && (
@@ -114,5 +119,6 @@ export default function ProjectPortal(): JSX.Element {
         )}
       </div>
     </div>
+    </ DefaultLayout >
   );
 }

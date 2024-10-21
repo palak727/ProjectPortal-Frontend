@@ -17,11 +17,11 @@ const ProjectModal = ({ project, onClose, onApply }: ProjectModalProps): JSX.Ele
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center"
+      className="fixed inset-0 z-10 overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center"
       onClick={onClose}
     >
       <motion.div
-        className="bg-white w-full max-w-md p-6 rounded-2xl shadow-xl"
+        className="bg-white z-99999 w-full max-w-xl p-6 rounded-2xl shadow-xl"
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}

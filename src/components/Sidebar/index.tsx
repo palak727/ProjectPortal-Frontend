@@ -64,7 +64,7 @@ const menuGroups = [
           </svg>
         ),
         label: "Projects",
-        route: "/prof/projects",
+        route: "/project",
       },
       {
         icon: (

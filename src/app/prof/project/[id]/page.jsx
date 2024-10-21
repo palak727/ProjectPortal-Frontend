@@ -26,7 +26,6 @@ function ProjectDetails() {
     setSelectedStudent(student);
     setShowStudentDetails(true);
   };
-  
 
   useEffect(() => {
     const fetchProjectData = async () => {
@@ -59,19 +58,16 @@ function ProjectDetails() {
   }, [id]);
 
   useEffect(() => {
-    
     if (showUpdateModal) {
-      document.body.style.overflow = "hidden"; 
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto"; 
+      document.body.style.overflow = "auto";
     }
 
     return () => {
-      document.body.style.overflow = "auto"; 
+      document.body.style.overflow = "auto";
     };
   }, [showUpdateModal]);
-
-  
 
   const handleUpdateProject = async () => {
     try {
@@ -114,10 +110,10 @@ function ProjectDetails() {
         >
           Update Project
         </button>
-       {/* Project Details */}
+        {/* Project Details */}
         <ProjectMoreDetails project={project} />
         {/* Applications */}
-       <StudentTable />
+        <StudentTable />
       </DefaultLayout>
 
       {/* Update Project Modal */}

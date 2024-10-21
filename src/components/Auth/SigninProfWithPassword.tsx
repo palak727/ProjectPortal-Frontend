@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import Link from "next/link";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 export default function SigninProfWithPassword() {
   const [formData, setFormData] = useState({
@@ -17,11 +17,11 @@ export default function SigninProfWithPassword() {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({ ...prev, remember: e.target.checked }));
+    setFormData((prev) => ({ ...prev, remember: e.target.checked }));
   };
 
   const validate = (): boolean => {
@@ -47,22 +47,21 @@ export default function SigninProfWithPassword() {
       console.log("Form submitted", formData);
     }
     try {
-
-      const res = await fetch('0.0.0.0:3045/prof/signin', {
+      const res = await fetch("0.0.0.0:3045/prof/signin", {
         method: "POST",
         body: JSON.stringify(formData),
-        headers: { "Content-Type": "application/json" }
-      })
+        headers: { "Content-Type": "application/json" },
+      });
 
-      const data = await res.json()
+      const data = await res.json();
 
       if (data.error) {
-        throw new Error(data.error)
+        throw new Error(data.error);
       }
-      toast.success('Login successful!');
+      toast.success("Login successful!");
     } catch (error) {
       console.error(error);
-      toast.error('Login not successful!');
+      toast.error("Login not successful!");
     }
   };
 
@@ -112,7 +111,9 @@ export default function SigninProfWithPassword() {
             {/* Add your SVG for password icon here */}
           </span>
         </div>
-        {errors.password && <span className="text-red-500">{errors.password}</span>}
+        {errors.password && (
+          <span className="text-red-500">{errors.password}</span>
+        )}
       </div>
 
       <div className="mb-6 flex items-center justify-between gap-2 py-2">
@@ -129,8 +130,9 @@ export default function SigninProfWithPassword() {
             className="peer sr-only"
           />
           <span
-            className={`mr-2.5 inline-flex h-5.5 w-5.5 items-center justify-center rounded-md border border-stroke bg-white text-white text-opacity-0 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-opacity-100 dark:border-stroke-dark dark:bg-white/5 ${formData.remember ? "bg-primary" : ""
-              }`}
+            className={`mr-2.5 inline-flex h-5.5 w-5.5 items-center justify-center rounded-md border border-stroke bg-white text-white text-opacity-0 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-opacity-100 dark:border-stroke-dark dark:bg-white/5 ${
+              formData.remember ? "bg-primary" : ""
+            }`}
           >
             {/* Add your SVG for checkmark here */}
           </span>

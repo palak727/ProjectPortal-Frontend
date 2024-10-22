@@ -1,0 +1,107 @@
+[
+  {
+    "student_serial": 1,
+    "student_id": "S12345",
+    "username": "john_doe",
+    "email_id": "john.doe@example.com",
+    "password": "password123",
+    "first_name": "John",
+    "middle_name": "A",
+    "last_name": "Doe",
+    "department": "Computer Science",
+    "programme": "B-TECH",
+    "batch": "2023",
+    "resume": ["resume1.pdf", "resume2.pdf"],
+    "description": "A passionate computer science student.",
+    "gender": "male",
+    "skills": ["JavaScript", "Python", "C++"],
+    "resources": {
+      "GitHub": "https://github.com/johndoe",
+      "LinkedIn": "https://linkedin.com/in/johndoe"
+    }
+  },
+  {
+    "student_serial": 2,
+    "student_id": "S12346",
+    "username": "jane_smith",
+    "email_id": "jane.smith@example.com",
+    "password": "password456",
+    "first_name": "Jane",
+    "middle_name": "B",
+    "last_name": "Smith",
+    "department": "Electrical Engineering",
+    "programme": "B-TECH",
+    "batch": "2024",
+    "resume": ["resume3.pdf"],
+    "description": "An enthusiastic electrical engineering student.",
+    "gender": "female",
+    "skills": ["MATLAB", "Circuit Design", "Embedded Systems"],
+    "resources": {
+      "GitHub": "https://github.com/janesmith",
+      "LinkedIn": "https://linkedin.com/in/janesmith"
+    }
+  },
+  {
+    "student_serial": 3,
+    "student_id": "S12347",
+    "username": "alice_jones",
+    "email_id": "alice.jones@example.com",
+    "password": "password789",
+    "first_name": "Alice",
+    "middle_name": "C",
+    "last_name": "Jones",
+    "department": "Mechanical Engineering",
+    "programme": "B-TECH",
+    "batch": "2022",
+    "resume": ["resume4.pdf"],
+    "description": "A dedicated mechanical engineering student.",
+    "gender": "female",
+    "skills": ["AutoCAD", "SolidWorks", "Thermodynamics"],
+    "resources": {
+      "GitHub": "https://github.com/alicejones",
+      "LinkedIn": "https://linkedin.com/in/alicejones"
+    }
+  },
+  {
+    "student_serial": 4,
+    "student_id": "S12348",
+    "username": "bob_brown",
+    "email_id": "bob.brown@example.com",
+    "password": "password101",
+    "first_name": "Bob",
+    "middle_name": "D",
+    "last_name": "Brown",
+    "department": "Civil Engineering",
+    "programme": "B-TECH",
+    "batch": "2021",
+    "resume": ["resume5.pdf"],
+    "description": "A motivated civil engineering student.",
+    "gender": "male",
+    "skills": ["Structural Analysis", "AutoCAD", "Project Management"],
+    "resources": {
+      "GitHub": "https://github.com/bobbrown",
+      "LinkedIn": "https://linkedin.com/in/bobbrown"
+    }
+  },
+  {
+    "student_serial": 5,
+    "student_id": "S12349",
+    "username": "charlie_davis",
+    "email_id": "charlie.davis@example.com",
+    "password": "password102",
+    "first_name": "Charlie",
+    "middle_name": "E",
+    "last_name": "Davis",
+    "department": "Chemical Engineering",
+    "programme": "B-TECH",
+    "batch": "2025",
+    "resume": ["resume6.pdf"],
+    "description": "An aspiring chemical engineering student.",
+    "gender": "male",
+    "skills": ["ChemCAD", "Process Design", "Thermodynamics"],
+    "resources": {
+      "GitHub": "https://github.com/charliedavis",
+      "LinkedIn": "https://linkedin.com/in/charliedavis"
+    }
+  }
+]

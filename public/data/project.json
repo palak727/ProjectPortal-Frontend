@@ -1,0 +1,118 @@
+[
+  {
+    "created_at": "2024-09-20T10:00:00.000Z",
+    "description": "This project aims to develop an innovative e-commerce platform leveraging AI to personalize shopping experiences.",
+    "domain": "E-commerce",
+    "duration_in_days": 120,
+    "prof_id": "michael.smith@example.com",
+    "project_id": 1,
+    "project_type": "Development",
+    "resource_links": [
+      { "link": "https://example.com/ecommerce-whitepaper" },
+      { "link": "https://example.com/api-docs" }
+    ],
+    "skills_required": [
+      { "skill": "JavaScript" },
+      { "skill": "React" },
+      { "skill": "Node.js" }
+    ],
+    "start_date": "2024-10-01T09:00:00.000Z",
+    "status": "CRE",
+    "tags": [
+      { "tag": "E-commerce" },
+      { "tag": "AI" },
+      { "tag": "Web Development" }
+    ],
+    "title": "AI-Powered E-commerce Platform",
+    "updated_at": "2024-09-20T10:00:00.000Z",
+    "vacancies": 5,
+    "weekly_commitment": 10
+  },
+  {
+    "created_at": "2024-09-22T14:15:00.000Z",
+    "description": "A project dedicated to creating a mobile application for mental health support using a community-driven approach.",
+    "domain": "Health",
+    "duration_in_days": 60,
+    "prof_id": "emily.johnson@example.com",
+    "project_id": 2,
+    "project_type": "Mobile Development",
+    "resource_links": [
+      { "link": "https://example.com/mental-health-research" },
+      { "link": "https://example.com/app-architecture" }
+    ],
+    "skills_required": [
+      { "skill": "Flutter" },
+      { "skill": "Firebase" },
+      { "skill": "UX Design" }
+    ],
+    "start_date": "2024-11-01T10:00:00.000Z",
+    "status": "CRE",
+    "tags": [
+      { "tag": "Mental Health" },
+      { "tag": "Mobile App" },
+      { "tag": "Community" }
+    ],
+    "title": "Community-Based Mental Health App",
+    "updated_at": "2024-09-22T14:15:00.000Z",
+    "vacancies": 4,
+    "weekly_commitment": 12
+  },
+  {
+    "created_at": "2024-09-25T16:30:00.000Z",
+    "description": "This project explores renewable energy solutions, focusing on solar energy harnessing techniques for urban areas.",
+    "domain": "Energy",
+    "duration_in_days": 180,
+    "prof_id": "john.doe@example.com",
+    "project_id": 3,
+    "project_type": "Research",
+    "resource_links": [
+      { "link": "https://example.com/renewable-energy-studies" },
+      { "link": "https://example.com/solar-energy-guide" }
+    ],
+    "skills_required": [
+      { "skill": "Energy Engineering" },
+      { "skill": "Data Analysis" },
+      { "skill": "Project Management" }
+    ],
+    "start_date": "2024-11-15T08:00:00.000Z",
+    "status": "CRE",
+    "tags": [
+      { "tag": "Renewable Energy" },
+      { "tag": "Solar" },
+      { "tag": "Urban Development" }
+    ],
+    "title": "Urban Solar Energy Solutions",
+    "updated_at": "2024-09-25T16:30:00.000Z",
+    "vacancies": 2,
+    "weekly_commitment": 20
+  },
+  {
+    "created_at": "2024-09-30T09:45:00.000Z",
+    "description": "A project that focuses on developing educational tools and platforms to enhance STEM learning for high school students.",
+    "domain": "Education",
+    "duration_in_days": 75,
+    "prof_id": "jdoe@example.com",
+    "project_id": 4,
+    "project_type": "Development",
+    "resource_links": [
+      { "link": "https://example.com/stem-education-research" },
+      { "link": "https://example.com/education-tools-guide" }
+    ],
+    "skills_required": [
+      { "skill": "Java" },
+      { "skill": "React" },
+      { "skill": "Graphic Design" }
+    ],
+    "start_date": "2024-11-01T09:00:00.000Z",
+    "status": "CRE",
+    "tags": [
+      { "tag": "Education" },
+      { "tag": "STEM" },
+      { "tag": "Development" }
+    ],
+    "title": "STEM Education Enhancement Tools",
+    "updated_at": "2024-09-30T09:45:00.000Z",
+    "vacancies": 3,
+    "weekly_commitment": 15
+  }
+]

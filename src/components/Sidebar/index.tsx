@@ -61,7 +61,7 @@ const menuGroups = [
           </svg>
         ),
         label: "Applications",
-        route: "/prof/applications",
+        route: "/prof/Application",
       },
 
       {

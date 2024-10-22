@@ -3,14 +3,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import axios from "axios";
 import Loader from "@/components/common/Loader";
-import Select from "react-select";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
 import makeAnimated from "react-select/animated";
 import CreatableSelect from "react-select/creatable";
-import ProgressBar from "@/components/ProgressBar";
 import StudentTable from "@/components/StudentTable/StudentTable";
+import ProjectMoreDetails from "@/components/ProjectDetails";
 
 function ProjectDetails() {
   const { id } = useParams();
@@ -27,9 +26,6 @@ function ProjectDetails() {
     setSelectedStudent(student);
     setShowStudentDetails(true);
   };
-  const daysPassed = Math.floor(
-    (new Date() - new Date(project?.start_date)) / (1000 * 60 * 60 * 24),
-  );
 
   useEffect(() => {
     const fetchProjectData = async () => {
@@ -46,34 +42,32 @@ function ProjectDetails() {
         setLoading(false);
       }
     };
+    const fetchApplications = async () => {
+      try {
+        const response = await axios.get("/data/application.json");
+        const filteredApplications = response.data.filter(
+          (app) => app.project_id === Number(id) && app.status === "OPN",
+        );
+        setApplications(filteredApplications);
+      } catch (error) {
+        console.error("Failed to fetch application data:", error);
+      }
+    };
     fetchProjectData();
     fetchApplications();
   }, [id]);
 
   useEffect(() => {
-    
     if (showUpdateModal) {
-      document.body.style.overflow = "hidden"; 
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto"; 
+      document.body.style.overflow = "auto";
     }
 
     return () => {
-      document.body.style.overflow = "auto"; 
+      document.body.style.overflow = "auto";
     };
   }, [showUpdateModal]);
-
-  const fetchApplications = async () => {
-    try {
-      const response = await axios.get("/data/application.json");
-      const filteredApplications = response.data.filter(
-        (app) => app.project_id === Number(id) && app.status === "OPN",
-      );
-      setApplications(filteredApplications);
-    } catch (error) {
-      console.error("Failed to fetch application data:", error);
-    }
-  };
 
   const handleUpdateProject = async () => {
     try {
@@ -116,132 +110,9 @@ function ProjectDetails() {
         >
           Update Project
         </button>
-
-        {/* Search Input */}
-        <input
-          type="search"
-          placeholder="Search applications..."
-          className="mb-4 w-full rounded border border-gray-300 p-2"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-
         {/* Project Details */}
-        <div className="mb-8 flex flex-col gap-4 md:flex-row">
-          <div className="w-full rounded-lg bg-white p-4 shadow-md md:w-1/2">
-            <h2 className="text-lg font-semibold">Project Details</h2>
-            <p>
-              <strong>Description:</strong> {project.description}
-            </p>
-            <p>
-              <strong>Domain:</strong> {project.domain}
-            </p>
-            <p>
-              <strong>Type:</strong> {project.project_type}
-            </p>
-            <p>
-              <strong>Duration:</strong> {project.duration_in_days} days
-            </p>
-            <p>
-              <strong>Start Date:</strong>{" "}
-              {new Date(project.start_date).toLocaleDateString()}
-            </p>
-            <ProgressBar
-              current={daysPassed}
-              total={project.duration_in_days}
-            />
-            <p>
-              {daysPassed} / {project.duration_in_days} days
-            </p>
-
-            <p>
-              <strong>Status:</strong> {project.status}
-            </p>
-            <p>
-              <strong>Vacancies:</strong> {project.vacancies}{" "}
-            </p>
-            <p>
-              <strong>Weekly Commitment:</strong> {project.weekly_commitment}{" "}
-              hours{" "}
-            </p>
-            <div>
-              <strong>Skills Required:</strong>
-              <ul className="list-inside list-disc">
-                {project.skills_required.map((s, idx) => (
-                  <li key={idx}>{s.skill}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <strong>Resource Links:</strong>
-              <ul className="list-inside list-disc">
-                {project.resource_links.map((r, idx) => (
-                  <li key={idx}>
-                    <a href={r.link} className="text-blue-500 hover:underline">
-                      {r.link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <strong>Tags:</strong>
-              <ul className="list-inside list-disc">
-                {project.tags.map((t, idx) => (
-                  <li key={idx}>{t.tag}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Applications Table */}
-          <div className="w-full rounded-lg bg-white p-4 shadow-md md:w-1/2">
-            <h2 className="text-lg font-semibold">Pending Applications</h2>
-            <table className="mt-2 w-full table-auto text-left">
-              <thead>
-                <tr>
-                  <th className="px-4 py-2">Title</th>
-                  <th className="px-4 py-2">Deadline</th>
-                  <th className="px-4 py-2">Status</th>
-                  <th className="px-4 py-2">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredApplications.map((app) => (
-                  <tr key={app.application_id} className="hover:bg-gray-100">
-                    <td className="border px-4 py-2">{app.title}</td>
-                    <td className="border px-4 py-2">
-                      {new Date(app.deadline).toLocaleDateString()}
-                    </td>
-                    <td className="border px-4 py-2">Pending</td>
-                    <td className="border px-4 py-2">
-                      <button
-                        className="hover: mr-2 transform  rounded text-white transition-transform hover:rotate-3 hover:scale-110 active:rotate-0 active:scale-100"
-                        onClick={() =>
-                          console.log(
-                            `Accept application: ${app.application_id}`,
-                          )
-                        }
-                      >
-                        ✅
-                      </button>
-                      <button
-                        className="hover: transform  rounded text-white transition-transform hover:rotate-3 hover:scale-110 active:rotate-0 active:scale-100"
-                        onClick={() =>
-                          console.log(
-                            `Reject application: ${app.application_id}`,
-                          )
-                        }
-                      >
-                        ❌
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <ProjectMoreDetails project={project} />
+        {/* Applications */}
         <StudentTable />
       </DefaultLayout>
 

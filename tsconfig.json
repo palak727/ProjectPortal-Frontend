@@ -21,6 +21,16 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/prof/project/[id]/page.jsx", "src/components/ProgressBar/index.js", "src/components/StudentTable/StudentTable.jsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/app/prof/project/[id]/page.jsx",
+    "src/components/ProgressBar/index.js",
+    "src/components/StudentTable/StudentTable.jsx",
+    "src/app/project/[id]/page.jsx",
+    "src/app/prof/project/page.tsx"
+  ],
   "exclude": ["node_modules"]
 }

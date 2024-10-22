@@ -22,7 +22,7 @@ export const SignupStudent = () => {
       </div>
     </>
   );
-}
+};
 
 export const SignupProf = () => {
   return (
@@ -41,4 +41,4 @@ export const SignupProf = () => {
       </div>
     </>
   );
-}
+};

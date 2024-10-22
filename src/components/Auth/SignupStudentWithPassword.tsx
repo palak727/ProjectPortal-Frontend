@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 interface FormData {
   username: string;
@@ -52,12 +52,14 @@ export default function SignupStudentWithPassword() {
     if (!formData.username) tempErrors.username = "Username is required";
     if (!formData.student_id) tempErrors.student_id = "Student ID is required";
     if (!formData.email) tempErrors.email = "Email is required";
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) tempErrors.email = "Email is invalid";
+    else if (!/\S+@\S+\.\S+/.test(formData.email))
+      tempErrors.email = "Email is invalid";
     if (!formData.password) tempErrors.password = "Password is required";
     if (formData.password !== formData.confirmPassword)
       tempErrors.confirmPassword = "Passwords do not match";
     if (!formData.first_name) tempErrors.first_name = "First name is required";
-    if (!formData.termsAccepted) tempErrors.termsAccepted = "You must accept the terms";
+    if (!formData.termsAccepted)
+      tempErrors.termsAccepted = "You must accept the terms";
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
   };
@@ -68,22 +70,21 @@ export default function SignupStudentWithPassword() {
       console.log("Form submitted", formData);
     }
     try {
-
-      const res = await fetch('0.0.0.0:3045/api/v1/student/signup', {
+      const res = await fetch("0.0.0.0:3045/api/v1/student/signup", {
         method: "POST",
         body: JSON.stringify(formData),
-        headers: { "Content-Type": "application/json" }
-      })
+        headers: { "Content-Type": "application/json" },
+      });
 
-      const data = await res.json()
-    
+      const data = await res.json();
+
       if (data.error) {
-        throw new Error(data.error)
+        throw new Error(data.error);
       }
-      toast.success('Login successful!');
+      toast.success("Login successful!");
     } catch (error) {
       console.error(error);
-      toast.error('Login not successful!');
+      toast.error("Login not successful!");
     }
     setFormData({
       username: "",
@@ -95,7 +96,7 @@ export default function SignupStudentWithPassword() {
       middle_name: "",
       last_name: "",
       termsAccepted: false,
-    })
+    });
   };
 
   return (
@@ -131,7 +132,9 @@ export default function SignupStudentWithPassword() {
           onChange={handleChange}
           className="w-full rounded-lg border bg-transparent py-3 pl-4"
         />
-        {errors.student_id && <p className="text-red-500">{errors.student_id}</p>}
+        {errors.student_id && (
+          <p className="text-red-500">{errors.student_id}</p>
+        )}
       </div>
 
       {/* First Name */}
@@ -148,7 +151,9 @@ export default function SignupStudentWithPassword() {
           onChange={handleChange}
           className="w-full rounded-lg border bg-transparent py-3 pl-4"
         />
-        {errors.first_name && <p className="text-red-500">{errors.first_name}</p>}
+        {errors.first_name && (
+          <p className="text-red-500">{errors.first_name}</p>
+        )}
       </div>
 
       {/* Middle Name */}
@@ -231,7 +236,9 @@ export default function SignupStudentWithPassword() {
           onChange={handleChange}
           className="w-full rounded-lg border bg-transparent py-3 pl-4"
         />
-        {errors.confirmPassword && <p className="text-red-500">{errors.confirmPassword}</p>}
+        {errors.confirmPassword && (
+          <p className="text-red-500">{errors.confirmPassword}</p>
+        )}
       </div>
 
       {/* Accept Terms */}
@@ -246,14 +253,16 @@ export default function SignupStudentWithPassword() {
           />
           Accept terms and conditions
         </label>
-        {errors.termsAccepted && <p className="text-red-500">{errors.termsAccepted}</p>}
+        {errors.termsAccepted && (
+          <p className="text-red-500">{errors.termsAccepted}</p>
+        )}
       </div>
 
       {/* Submit Button */}
       <div className="mb-4">
         <button
           type="submit"
-          className="w-full bg-primary text-white py-3 rounded-lg"
+          className="w-full rounded-lg bg-primary py-3 text-white"
         >
           Sign Up
         </button>

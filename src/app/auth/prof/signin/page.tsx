@@ -4,8 +4,7 @@ import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
-import {SigninProf} from "@/components/Auth/Signin";
-
+import { SigninProf } from "@/components/Auth/Signin";
 
 export const metadata: Metadata = {
   title: "Next.js Login Page | NextAdmin - Next.js Dashboard Kit",

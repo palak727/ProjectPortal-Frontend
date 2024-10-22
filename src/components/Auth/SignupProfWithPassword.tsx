@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 interface FormData {
   username: string;
@@ -51,7 +51,9 @@ export default function SignupProfWithPassword() {
 
   const [errors, setErrors] = useState<FormErrors>({});
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -63,13 +65,15 @@ export default function SignupProfWithPassword() {
     const tempErrors: FormErrors = {};
     if (!formData.username) tempErrors.username = "Username is required";
     if (!formData.email) tempErrors.email = "Email is required";
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) tempErrors.email = "Email is invalid";
+    else if (!/\S+@\S+\.\S+/.test(formData.email))
+      tempErrors.email = "Email is invalid";
     if (!formData.password) tempErrors.password = "Password is required";
     if (formData.password !== formData.confirmPassword)
       tempErrors.confirmPassword = "Passwords do not match";
     if (!formData.first_name) tempErrors.first_name = "First name is required";
     if (!formData.last_name) tempErrors.last_name = "Last name is required";
-    if (!formData.termsAccepted) tempErrors.termsAccepted = "You must accept the terms";
+    if (!formData.termsAccepted)
+      tempErrors.termsAccepted = "You must accept the terms";
 
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
@@ -79,10 +83,10 @@ export default function SignupProfWithPassword() {
     e.preventDefault();
     if (validate()) {
       try {
-        const res = await fetch('http://0.0.0.0:3045/api/v1/professor/signup', {
+        const res = await fetch("http://0.0.0.0:3045/api/v1/professor/signup", {
           method: "POST",
           body: JSON.stringify(formData),
-          headers: { "Content-Type": "application/json" }
+          headers: { "Content-Type": "application/json" },
         });
 
         const data = await res.json();
@@ -90,10 +94,10 @@ export default function SignupProfWithPassword() {
         if (data.error) {
           throw new Error(data.error);
         }
-        toast.success('Signup successful!');
+        toast.success("Signup successful!");
       } catch (error) {
         console.error(error);
-        toast.error('Signup not successful!');
+        toast.error("Signup not successful!");
       }
 
       // Reset form after submission
@@ -133,7 +137,9 @@ export default function SignupProfWithPassword() {
           onChange={handleChange}
           className="w-full rounded-lg border bg-transparent py-3 pl-4"
         />
-        {errors.first_name && <p className="text-red-500">{errors.first_name}</p>}
+        {errors.first_name && (
+          <p className="text-red-500">{errors.first_name}</p>
+        )}
       </div>
 
       {/* Middle Name */}
@@ -234,7 +240,9 @@ export default function SignupProfWithPassword() {
           onChange={handleChange}
           className="w-full rounded-lg border bg-transparent py-3 pl-4"
         />
-        {errors.confirmPassword && <p className="text-red-500">{errors.confirmPassword}</p>}
+        {errors.confirmPassword && (
+          <p className="text-red-500">{errors.confirmPassword}</p>
+        )}
       </div>
 
       {/* Title */}
@@ -359,14 +367,16 @@ export default function SignupProfWithPassword() {
           />
           Accept terms and conditions
         </label>
-        {errors.termsAccepted && <p className="text-red-500">{errors.termsAccepted}</p>}
+        {errors.termsAccepted && (
+          <p className="text-red-500">{errors.termsAccepted}</p>
+        )}
       </div>
 
       {/* Submit Button */}
       <div className="mb-4">
         <button
           type="submit"
-          className="w-full bg-primary text-white py-3 rounded-lg"
+          className="w-full rounded-lg bg-primary py-3 text-white"
         >
           Sign Up
         </button>
